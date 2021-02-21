@@ -23,4 +23,4 @@ testSet <- irisDS[training_indices,]
 LinearModel<-lm(trainSet$Petal.Width ~ testSet$Petal.Length)
 summary(LinearModel)
 predictions<-predict(LinearModel, testSet)
-predictions
+plot(testSet$Petal.Width, testSet$Petal.Length)
