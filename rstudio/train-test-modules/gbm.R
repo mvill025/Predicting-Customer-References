@@ -20,6 +20,8 @@ gbmFit <- train(
   trControl = fitControl,
 )
 
+gbmFit
+
 gbmFitImp <- varImp(gbmFit, scale = FALSE)
 plot(gbmFitImp, top = 20 )
 
@@ -27,7 +29,13 @@ classes <- c("salary", "age", "elevel", "car", "zipcode", "credit", "brand")
 
 # evaluate the random forest model
 gbmPredicted <- predict(gbmFit,testing)
+dat <- data.frame(
+  obs = gbmPredicted,
+  pred = testing$brand
+)
+
+
 postResample(gbmPredicted, testing$brand)
-defaultSummary(dat, lev = classes, model = rfFit2)
+defaultSummary(dat, lev = classes, model = gbmFit)
 
 gbmIncompletePredicted <- predict(gbmFit,incompleteTest)
