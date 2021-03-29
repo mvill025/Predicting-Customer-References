@@ -62,13 +62,13 @@ LIST(transactions)
 itemFrequencyPlot(
   transactions, 
   topN = 20, 
-  type = 'absolute'
+  type = 'absolute',
 )
 
 # histogram of # of items per transaction
 hist(
   size(transactions),
-  main = "Histogram(# of items)",
+  main = "# of Items Histogram",
   xlab="# of items in transaction",
   border = "#0074b7",
   col = "#60a3d9",
@@ -134,9 +134,9 @@ runRules <- function(df, supp, conf, minlen = 1, maxlen = 30){
 }
 
 # general rules
-general1 <- runRules(transactions, 0.0033, 0.8, 2)
-general2 <- runRules(transactions, 0.0045, 0.7, 2)
-general3 <- runRules(transactions, 0.002, 0.90, 2)
+general1 <- runRules(transactions, 0.01, 0.58, 1)
+general2 <- runRules(transactions, 0.0045, 0.7, 1)
+general3 <- runRules(transactions, 0.002, 0.90, 1)
 
 generalRules <- union(general1, general2)
 generalRules <- union(generalRules, general3)
